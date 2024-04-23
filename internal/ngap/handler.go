@@ -1105,7 +1105,7 @@ func handleUEContextReleaseRequestMain(ran *context.AmfRan,
 			ranUe.Log.Info("Ue Context in Non GMM-Registered")
 			amfUe.SmContextList.Range(func(key, value interface{}) bool {
 				smContext := value.(*context.SmContext)
-				detail, err := consumer.SendReleaseSmContextRequest(amfUe, smContext, &causeAll, "", nil)
+				detail, err := consumer.GetConsumer().SendReleaseSmContextRequest(amfUe, smContext, &causeAll, "", nil)
 				if err != nil {
 					ranUe.Log.Errorf("Send ReleaseSmContextRequest Error[%s]", err.Error())
 				} else if detail != nil {

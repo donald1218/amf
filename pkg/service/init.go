@@ -208,6 +208,7 @@ func (a *AmfApp) Start(tlsKeyLogPath string) {
 func (a *AmfApp) Terminate() {
 	logger.InitLog.Infof("Terminating AMF...")
 	amfSelf := amf_context.GetSelf()
+	a.cancel()
 
 	// TODO: forward registered UE contexts to target AMF in the same AMF set if there is one
 

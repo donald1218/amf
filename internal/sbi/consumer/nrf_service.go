@@ -100,7 +100,8 @@ func (s *nnrfService) SendSearchNFInstances(nrfUri string, targetNfType, request
 	return &result, err
 }
 
-func (s *nnrfService) SearchUdmSdmInstance(ue *amf_context.AmfUe, nrfUri string, targetNfType, requestNfType models.NfType,
+func (s *nnrfService) SearchUdmSdmInstance(
+	ue *amf_context.AmfUe, nrfUri string, targetNfType, requestNfType models.NfType,
 	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts,
 ) error {
 	resp, localErr := s.SendSearchNFInstances(nrfUri, targetNfType, requestNfType, param)
@@ -126,7 +127,8 @@ func (s *nnrfService) SearchUdmSdmInstance(ue *amf_context.AmfUe, nrfUri string,
 	return nil
 }
 
-func (s *nnrfService) SearchNssfNSSelectionInstance(ue *amf_context.AmfUe, nrfUri string, targetNfType, requestNfType models.NfType,
+func (s *nnrfService) SearchNssfNSSelectionInstance(
+	ue *amf_context.AmfUe, nrfUri string, targetNfType, requestNfType models.NfType,
 	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts,
 ) error {
 	resp, localErr := s.SendSearchNFInstances(nrfUri, targetNfType, requestNfType, param)

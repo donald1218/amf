@@ -1402,7 +1402,7 @@ func releaseInactivePDUSession(ue *context.AmfUe, anType models.AccessType, uePd
 			Cause: &cause,
 		}
 		ue.GmmLog.Infof("Release Inactive PDU Session[%d] over  %q", pduSessionID, smContext.AccessType())
-		problemDetail, err := consumer.SendReleaseSmContextRequest(ue, smContext, causeAll, "", nil)
+		problemDetail, err := consumer.GetConsumer().SendReleaseSmContextRequest(ue, smContext, causeAll, "", nil)
 		if problemDetail != nil {
 			ue.GmmLog.Errorf("Release SmContext Failed Problem[%+v]", problemDetail)
 		} else if err != nil {
@@ -1595,7 +1595,7 @@ func HandleNotificationResponse(ue *context.AmfUe, notificationResponse *nasMess
 					causeAll := &context.CauseAll{
 						Cause: &cause,
 					}
-					problemDetail, err := consumer.SendReleaseSmContextRequest(ue, smContext, causeAll, "", nil)
+					problemDetail, err := consumer.GetConsumer().SendReleaseSmContextRequest(ue, smContext, causeAll, "", nil)
 					if problemDetail != nil {
 						ue.GmmLog.Errorf("Release SmContext Failed Problem[%+v]", problemDetail)
 					} else if err != nil {
@@ -2192,7 +2192,7 @@ func HandleRegistrationComplete(ue *context.AmfUe, accessType models.AccessType,
 			smContext := value.(*context.SmContext)
 
 			if smContext.AccessType() == accessType {
-				problemDetail, err := consumer.SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
+				problemDetail, err := consumer.GetConsumer().SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
 				if problemDetail != nil {
 					ue.GmmLog.Errorf("Release SmContext Failed Problem[%+v]", problemDetail)
 				} else if err != nil {
@@ -2318,7 +2318,9 @@ func HandleDeregistrationRequest(ue *context.AmfUe, anType models.AccessType,
 
 		if smContext.AccessType() == anType ||
 			targetDeregistrationAccessType == nasMessage.AccessTypeBoth {
-			problemDetail, err := consumer.SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
+			// CTFang
+			problemDetail, err := consumer.GetConsumer().SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
+			// problemDetail, err := service.GetApp().Consumer().SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
 			if problemDetail != nil {
 				ue.GmmLog.Errorf("Release SmContext Failed Problem[%+v]", problemDetail)
 			} else if err != nil {

@@ -80,7 +80,7 @@ func DeregistrationNotificationProcedure(ue *amf_context.AmfUe, deregData models
 		ue.SmContextList.Range(func(key, value interface{}) bool {
 			smContext := value.(*amf_context.SmContext)
 			if smContext.AccessType() == deregData.AccessType {
-				problemDetails, err = consumer.SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
+				problemDetails, err = consumer.GetConsumer().SendReleaseSmContextRequest(ue, smContext, nil, "", nil)
 				if problemDetails != nil {
 					ue.GmmLog.Errorf("Release SmContext Failed Problem[%+v]", problemDetails)
 				} else if err != nil {

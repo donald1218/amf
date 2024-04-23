@@ -172,7 +172,9 @@ func (s *nudmService) SDMGetSmfSelectData(ue *amf_context.AmfUe) (problemDetails
 	return problemDetails, err
 }
 
-func (s *nudmService) SDMGetUeContextInSmfData(ue *amf_context.AmfUe) (problemDetails *models.ProblemDetails, err error) {
+func (s *nudmService) SDMGetUeContextInSmfData(ue *amf_context.AmfUe) (
+	problemDetails *models.ProblemDetails, err error,
+) {
 	client := s.getSubscriberDMngmntClients(ue.NudmSDMUri)
 
 	ctx, _, err := amf_context.GetSelf().GetTokenCtx(models.ServiceName_NUDM_SDM, models.NfType_UDM)
@@ -246,7 +248,9 @@ func (s *nudmService) SDMSubscribe(ue *amf_context.AmfUe) (problemDetails *model
 	return problemDetails, err
 }
 
-func (s *nudmService) SDMGetSliceSelectionSubscriptionData(ue *amf_context.AmfUe) (problemDetails *models.ProblemDetails, err error) {
+func (s *nudmService) SDMGetSliceSelectionSubscriptionData(ue *amf_context.AmfUe) (
+	problemDetails *models.ProblemDetails, err error,
+) {
 	client := s.getSubscriberDMngmntClients(ue.NudmSDMUri)
 
 	paramOpt := Nudm_SubscriberDataManagement.GetNssaiParamOpts{
@@ -334,9 +338,9 @@ func (s *nudmService) SDMUnsubscribe(ue *amf_context.AmfUe) (problemDetails *mod
 	return problemDetails, err
 }
 
-func (s *nudmService) UeCmRegistration(ue *amf_context.AmfUe, accessType models.AccessType, initialRegistrationInd bool) (
-	*models.ProblemDetails, error,
-) {
+func (s *nudmService) UeCmRegistration(
+	ue *amf_context.AmfUe, accessType models.AccessType, initialRegistrationInd bool,
+) (*models.ProblemDetails, error) {
 	client := s.getUEContextMngmntClient(ue.NudmUECMUri)
 
 	amfSelf := amf_context.GetSelf()

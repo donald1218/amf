@@ -128,7 +128,9 @@ func (s *namfService) BuildUeContextModel(ue *amf_context.AmfUe) (ueContext mode
 	return ueContext
 }
 
-func (s *namfService) buildAmPolicyReqTriggers(triggers []models.RequestTrigger) (amPolicyReqTriggers []models.AmPolicyReqTrigger) {
+func (s *namfService) buildAmPolicyReqTriggers(
+	triggers []models.RequestTrigger,
+) (amPolicyReqTriggers []models.AmPolicyReqTrigger) {
 	for _, trigger := range triggers {
 		switch trigger {
 		case models.RequestTrigger_LOC_CH:
