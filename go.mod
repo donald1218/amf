@@ -9,7 +9,7 @@ require (
 	github.com/free5gc/aper v1.0.5
 	github.com/free5gc/nas v1.1.3
 	github.com/free5gc/ngap v1.0.9-0.20240414165820-453b0aa37228
-	github.com/free5gc/openapi v1.0.9-0.20240424093716-bda9387bb300
+	github.com/free5gc/openapi v1.0.9-0.20240718074746-f272c26db1c3
 	github.com/free5gc/sctp v1.0.1
 	github.com/free5gc/util v1.0.6
 	github.com/gin-gonic/gin v1.9.1
@@ -77,3 +77,5 @@ require (
 	gopkg.in/h2non/gock.v1 v1.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+// replace github.com/free5gc/openapi => /home/timlin/openapi
